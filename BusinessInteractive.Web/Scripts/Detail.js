@@ -8,10 +8,14 @@
 		$('#messages').append('<li>' + message + '</li>');
 	};
 
-	chat.newPersonJoined = function (personJoined)
+	chat.newPersonJoinedOrLeft = function (count)
 	{
-		if (personJoined !== $.connection.hub.id) {
-			alert(personJoined);
+		$('#ChatWithOthers').toggleClass('btn-success', count > 1);
+		if (count > 1) {
+			$('#ChatWithOthers').text('Users (' + count + ') online');
+		}
+		else {
+			$('#ChatWithOthers').text('No Other Users online');
 		}
 	}
 
