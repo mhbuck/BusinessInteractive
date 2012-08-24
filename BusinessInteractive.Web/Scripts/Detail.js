@@ -22,8 +22,18 @@
 
 	chat.controlChanged = function (controlId, value, connectionId, userName) {
 		if ($.connection.hub.id != connectionId) {
-			toastr.info('The control ' + controlId + ' has been changed by ' + userName + ' to be ' + value);
+			$('#' + controlId).parent().parent().addClass('notify');
+
+			var toast = toastr.info( ' New Value: ' + value, 'The control ' + controlId + ' has been changed by ' + userName);
+			toast.click(function () { $('#' + controlId).val(value); });
 		}
+	}
+
+	chat.orderSaved = function (userName) {
+		var toast = toastr.success('Click to refresh', 'Order saved by ' + userName);
+		toast.click(function () {
+			location.href = location.href;
+		});
 	}
 
 	/*

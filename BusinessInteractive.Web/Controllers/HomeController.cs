@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessInteractive.Web.Hubs;
 using BusinessInteractive.Web.Models;
+using SignalR;
 
 namespace BusinessInteractive.Web.Controllers
 {
     public class HomeController : Controller
     {
+        static List<string> userNames = new List<string>() { "Bob", "Nicola", "Frank", "Kate" };
+
         private static List<Order> _orders = new List<Order>() {
                 new Order() { OrderId = 1, Description = "Description1", DeliveryAddress = "Home", Message="Awesome Message", Value = 12},
                 new Order() { OrderId = 2, Description = "Description2", DeliveryAddress = "Home", Message="Awesome Message", Value = 12},
@@ -37,6 +41,22 @@ namespace BusinessInteractive.Web.Controllers
         public ActionResult Detail(int? orderId)
         {
             Order order = this.GetOrders.Where(o => o.OrderId == orderId).Single();
+
+            return View(order);
+        }
+
+        [HttpPost]
+        public ActionResult Detail(Order order)
+        {
+            Order updateThisOne = this.GetOrders.Where(o => o.OrderId == order.OrderId).Single();
+
+            updateThisOne.Description = order.Description;
+            updateThisOne.DeliveryAddress = order.DeliveryAddress;
+            updateThisOne.Message = order.Message;
+            updateThisOne.Value = order.Value;
+
+            var context = GlobalHost.ConnectionManager.GetHubContext<ChatHub>();
+            context.Clients[order.OrderId.ToString()].orderSaved("Bob");
 
             return View(order);
         }

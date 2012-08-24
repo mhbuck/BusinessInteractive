@@ -8,57 +8,66 @@
 	<div class="row-fluid">
 		<div class="span3">
 			<h3>Order Detail</h3>
-			@using (Html.BeginForm()) {
+			@using (Html.BeginForm())
+   {
 				@Html.ValidationSummary(true)
 
 				@Html.HiddenFor(model => model.OrderId)
+	   
+				<div>
+					<div class="editor-label">
+						@Html.LabelFor(model => model.Value)
+					</div>
+					<div class="editor-field">
+						@Html.TextBoxFor(model => model.Value, new { id = "valueText", @class = "notifyChange" })
+						@Html.ValidationMessageFor(model => model.Value)
+					</div>
 
-				<div class="editor-label">
-					@Html.LabelFor(model => model.Value)
 				</div>
-				<div class="editor-field">
-					@Html.TextBoxFor(model => model.Value, new { id = "valueText", @class = "notifyChange" })
-					@Html.ValidationMessageFor(model => model.Value)
-				</div>
+				<div>
+					<div class="editor-label">
+						@Html.LabelFor(model => model.Description)
+					</div>
+					<div class="editor-field">
+						@Html.TextBoxFor(model => model.Description, new { id = "descriptionText", @class = "notifyChange" })
+						@Html.ValidationMessageFor(model => model.Description)
+					</div>
 
-				<div class="editor-label">
-					@Html.LabelFor(model => model.Description)
 				</div>
-				<div class="editor-field">
-					@Html.TextBoxFor(model => model.Description, new { id = "descriptionText", @class = "notifyChange" })
-					@Html.ValidationMessageFor(model => model.Description)
+				<div>
+					<div class="editor-label">
+						@Html.LabelFor(model => model.DeliveryAddress)
+					</div>
+					<div class="editor-field">
+						@Html.TextBoxFor(model => model.DeliveryAddress, new { id = "deliveryAddressText", @class = "notifyChange" })
+						@Html.ValidationMessageFor(model => model.DeliveryAddress)
+					</div>
 				</div>
-
-				<div class="editor-label">
-					@Html.LabelFor(model => model.DeliveryAddress)
-				</div>
-				<div class="editor-field">
-					@Html.TextBoxFor(model => model.DeliveryAddress, new { id = "deliveryAddressText", @class = "notifyChange" })
-					@Html.ValidationMessageFor(model => model.DeliveryAddress)
-				</div>
-
-				<div class="editor-label">
-					@Html.LabelFor(model => model.Message)
-				</div>
-				<div class="editor-field">
-					@Html.TextBoxFor(model => model.Message, new { id = "messageText", @class = "notifyChange" })
-					@Html.ValidationMessageFor(model => model.Message)
+	   
+				<div>
+					<div class="editor-label">
+						@Html.LabelFor(model => model.Message)
+					</div>
+					<div class="editor-field">
+						@Html.TextBoxFor(model => model.Message, new { id = "messageText", @class = "notifyChange" })
+						@Html.ValidationMessageFor(model => model.Message)
+					</div>
 				</div>
 
 				<p>
 					<input type="submit" class="btn btn-primary" value="Save" />
 				</p>
-			}
+   }
 			<div>
 				@Html.ActionLink("Back to List", "Index")
 			</div>
 		</div>
 		<div class="span5">
-			<div id="ChatWithOthers" style="width:90%" class="btn">No Other Users online</div>
+			<div id="ChatWithOthers" style="width: 90%" class="btn">No Other Users online</div>
 			<ul id="messages"></ul>
 			<form id="send-message" action="#">
 				<input type="text" id="new-message" />
-				<input type="submit" id="send"  value="Send" class="send btn" />
+				<input type="submit" id="send" value="Send" class="send btn" />
 			</form>
 		</div>
 	</div>

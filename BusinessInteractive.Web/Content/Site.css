@@ -14,3 +14,8 @@
     list-style-type: none;
     padding: 3px;
 }
+
+.notify
+{
+	border: 2px solid black;
+}
