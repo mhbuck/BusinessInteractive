@@ -20,6 +20,12 @@
 		}
 	}
 
+	chat.controlChanged = function (controlId, value, connectionId, userName) {
+		if ($.connection.hub.id != connectionId) {
+			toastr.info('The control ' + controlId + ' has been changed by ' + userName + ' to be ' + value);
+		}
+	}
+
 	/*
 	$("#broadcast").click(function () {
 		// Call the chat method on the server
@@ -47,4 +53,10 @@
 
 	$('#new-message').val('');
 	$('#new-message').focus();
+
+	$('.notifyChange').on('change', function () {
+		var orderId = $('#OrderId').val();
+
+		chat.controlUpdated(orderId, $(this).prop('id'), $(this).val());
+	});
 });

@@ -17,7 +17,7 @@
 					@Html.LabelFor(model => model.Value)
 				</div>
 				<div class="editor-field">
-					@Html.EditorFor(model => model.Value)
+					@Html.TextBoxFor(model => model.Value, new { id = "valueText", @class = "notifyChange" })
 					@Html.ValidationMessageFor(model => model.Value)
 				</div>
 
@@ -25,7 +25,7 @@
 					@Html.LabelFor(model => model.Description)
 				</div>
 				<div class="editor-field">
-					@Html.EditorFor(model => model.Description)
+					@Html.TextBoxFor(model => model.Description, new { id = "descriptionText", @class = "notifyChange" })
 					@Html.ValidationMessageFor(model => model.Description)
 				</div>
 
@@ -33,7 +33,7 @@
 					@Html.LabelFor(model => model.DeliveryAddress)
 				</div>
 				<div class="editor-field">
-					@Html.EditorFor(model => model.DeliveryAddress)
+					@Html.TextBoxFor(model => model.DeliveryAddress, new { id = "deliveryAddressText", @class = "notifyChange" })
 					@Html.ValidationMessageFor(model => model.DeliveryAddress)
 				</div>
 
@@ -41,7 +41,7 @@
 					@Html.LabelFor(model => model.Message)
 				</div>
 				<div class="editor-field">
-					@Html.EditorFor(model => model.Message)
+					@Html.TextBoxFor(model => model.Message, new { id = "messageText", @class = "notifyChange" })
 					@Html.ValidationMessageFor(model => model.Message)
 				</div>
 

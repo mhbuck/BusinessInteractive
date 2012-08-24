@@ -37,6 +37,13 @@ namespace BusinessInteractive.Web.Hubs
             Clients[orderId].newPersonJoinedOrLeft(orderCount[orderId].Count);
         }
 
+        public void ControlUpdated(string orderId, string controlId, string controlValue)
+        {
+            var userName = userNames[orderCount[orderId].IndexOf(Context.ConnectionId)];
+
+            Clients[orderId].controlChanged(controlId, controlValue, this.Context.ConnectionId, userName);
+        }
+
         public Task Disconnect()
         {
             foreach (KeyValuePair<string, List<string>> item in orderCount)
