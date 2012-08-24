@@ -24,6 +24,8 @@
 		@RenderBody()
 	</div>
 	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/signalr")
+	@Scripts.Render("/signalr/hubs")
 	@Scripts.Render("~/bundles/application")
 	@RenderSection("scripts", required: false)
 </body>

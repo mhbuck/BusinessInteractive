@@ -17,6 +17,12 @@ namespace BusinessInteractive.Web
 
             bundles.Add(new ScriptBundle("~/bundles/application").Include(
                         "~/Scripts/application.js"));
+            
+            bundles.Add(new ScriptBundle("~/bundles/details").Include(
+                        "~/Scripts/Detail.js"));
+            
+            bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
+                        "~/Scripts/jquery.signalR-{version}.js"));
         }
     }
 }
