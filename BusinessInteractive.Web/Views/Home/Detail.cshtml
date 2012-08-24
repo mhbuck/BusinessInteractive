@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
 	<div class="row-fluid">
-		<div class="span4">
+		<div class="span3">
 			<h3>Order Detail</h3>
 			@using (Html.BeginForm()) {
 				@Html.ValidationSummary(true)
@@ -53,13 +53,13 @@
 				@Html.ActionLink("Back to List", "Index")
 			</div>
 		</div>
-		<div class="span3">
-			<div>
-				<div id="ChatWithOthers" style="width:100%" class="btn">No Other Users online</div>
-			</div>
-			<div class="" style="width:100%;">
-				asdf
-			</div>
+		<div class="span5">
+			<div id="ChatWithOthers" style="width:90%" class="btn">No Other Users online</div>
+			<ul id="messages"></ul>
+			<form id="send-message" action="#">
+				<input type="text" id="new-message" />
+				<input type="submit" id="send"  value="Send" class="send btn" />
+			</form>
 		</div>
 	</div>
 </div>

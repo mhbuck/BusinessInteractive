@@ -11,9 +11,7 @@ namespace BusinessInteractive.Web
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap.css"));
-
-            //bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap.css", "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/application").Include(
                         "~/Scripts/application.js"));

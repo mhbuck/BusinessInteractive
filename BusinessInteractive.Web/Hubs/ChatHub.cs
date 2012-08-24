@@ -10,11 +10,15 @@ namespace BusinessInteractive.Web.Hubs
     public class ChatHub : Hub, IDisconnect
     {
         static Dictionary<string, List<string>> orderCount = new Dictionary<string, List<string>>();
+        static List<string> userNames = new List<string>() { "Bob", "Nicola", "Frank", "Kate" };
 
         public void Send(string orderId, string message)
         {
+            // Get a name
+            var userName = userNames[orderCount[orderId].IndexOf(Context.ConnectionId)];
+
             //Send messages out to the people who are on the same order
-            Clients[orderId].addMessage(message);
+            Clients[orderId].addMessage(userName, message);
             
         }
 
